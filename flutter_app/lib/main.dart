@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'screens/history_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/question_screen.dart';
+import 'screens/section_list_screen.dart';
+import 'screens/settings_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -67,6 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _navigateTo(BuildContext context, Widget screen) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -108,6 +118,27 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            const SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () => _navigateTo(context, const HomeScreen()),
+              child: const Text('HomeScreen'),
+            ),
+            ElevatedButton(
+              onPressed: () => _navigateTo(context, const QuestionScreen()),
+              child: const Text('QuestionScreen'),
+            ),
+            ElevatedButton(
+              onPressed: () => _navigateTo(context, const SectionListScreen()),
+              child: const Text('SectionListScreen'),
+            ),
+            ElevatedButton(
+              onPressed: () => _navigateTo(context, const SettingsScreen()),
+              child: const Text('SettingsScreen'),
+            ),
+            ElevatedButton(
+              onPressed: () => _navigateTo(context, const HistoryScreen()),
+              child: const Text('HistoryScreen'),
             ),
           ],
         ),
